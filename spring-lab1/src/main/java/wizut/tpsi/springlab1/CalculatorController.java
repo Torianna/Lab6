@@ -16,39 +16,39 @@ public class CalculatorController {
 
 
     @RequestMapping("/count")
-    public String hello(Model model, Float x, Float y, String operation) {
+    public String hello(Model model, CalculatorForm c) {
 
        float wynik=0;
 
         String wyn;
-        switch (operation) {
+        switch (c.getOperation()) {
             case "+": {
-                wynik = x+y;
+                wynik = c.getX()+c.getY();
 
                 break;
             }
             case "-": {
-                wynik = x-y;
+                wynik = c.getX()-c.getY();
                 break;
             }
             case "*": {
-                wynik = x*y;
+                wynik = c.getX()*c.getY();
                 break;
             }
             case "/": {
 
-                if(y==0)
+                if(c.getY()==0)
                 {
                     wyn="Nie dziel przez zero cholero!";
                     model.addAttribute("wyniczek", wyn);
                     return "home";
                 }
-                wynik = x/y;
+                wynik = c.getX()/c.getY();
                 break;
             }
         }
 
-        wyn= x+operation+y+"="+wynik;
+        wyn= c.getX()+c.getOperation()+c.getY()+"="+wynik;
 
 
         model.addAttribute("wyniczek", wyn);
