@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+
 public class CalculatorController {
 
     @RequestMapping("/")
@@ -36,12 +37,12 @@ public class CalculatorController {
             }
             case "/": {
 
-//                if(y==0)
-//                {
-//                    wyn="Nie dziel przez zero cholero!";
-//                    model.addAttribute("wyniczek", wyn);
-//                    return "home";
-//                }
+                if(y==0)
+                {
+                    wyn="Nie dziel przez zero cholero!";
+                    model.addAttribute("wyniczek", wyn);
+                    return "home";
+                }
                 wynik = x/y;
                 break;
             }
